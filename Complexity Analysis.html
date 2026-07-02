@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn queue with interactive lessons, quizzes, and visualisations." />
+    <meta name="keywords" content="data structures, algorithms, DSA, arrays, linked lists, trees" />
+    <meta name="author" content="Bandile" />
+    <meta property="og:title" content="DSA Learning Hub" />
+    <meta property="og:description" content="Learn queue with interactive lessons "/>
+    <meta property="og:url" content="https://yoursite.com" />
+    <meta name="theme-color" content="#4a90e2" />
+    <title>Algorithm and Complexity Analysis</title>
+</head>
+<body>
+<main>
+    <header><h1>Chapter 2 - Algorithm and Complexity Analysis</h1></header>
+    <h2>INTRODUCTION</h2>
+    <h3>What is an Algorithm</h3>
+    <p>A  step-by-step procedure or set of rules designed to solve a problem or perform a task.</p>
+    <p><strong>Every algorithm have important properties:</strong></p>
+    <ol>
+        <li>Correctness – it must produce the right result for all valid input.</li>
+        <li>Efficiency – it must use a reasonable amount of <strong>Time</strong> and <strong>Memory</strong>.</li>
+        <li>Clarity – it must be understandable to other programmers.</li>
+    </ol>
+    <p><strong>When we talk about the performance on an algorithm we concerned with 2 resources:</strong></p>
+    <ol>
+        <li>Time – How long it take to run.</li>
+        <li>Space – how much memory it uses.</li>
+    </ol>
+    <p><strong>Time alone is not a reliable measure:</strong></p>
+    <ul>
+        <li>You can have the same code but different machine and time depend on how good is your machine, so if your machine is good the time complexity will be low.</li>
+    </ul>
+    <p><strong>Instead, use complexity analysis:</strong></p>
+    <ul>
+        <li>This Method is independent to Machine, time and any other factor</li>
+    </ul>
+    <h3>Complexity Analysis</h3>
+    <ul>
+        <li>Measure growth of work</li>
+        <li>Independent to Machine(something at you are using to run you code like you pc etc)</li>
+        <li>It uses Big – O notation</li>
+    </ul>
+    <h4>Big – O notation</h4>
+    <ul>
+        <li>How you express a complexity of an algorithm</li>
+        <li>Describe how the work of an algorithm does grow as input size n increase</li>
+    </ul>
+    <ol>
+        <li>O(1) Constant
+            <ul><li>work</li></ul>
+        </li>
+        <li>O(logn) Logarithm
+            <ul>
+                <li>Work grows Slow </li>
+                <li> e.g Binary Search </li>
+            </ul>
+        </li>
+        <li>O(n) Linear
+            <ul>
+                <li>Work grow with n</li>
+                <li>e.g sequential Search</li>
+            </ul>
+        </li>
+        <li>O(n logn)
+            <ul>
+                <li>slight above the line</li>
+                <li>e.g merge sort</li>
+            </ul>
+        </li>
+        <li>O(n^2) quadratic
+            <ul>
+                <li>Work grow as n squared </li>
+                <li>e.g bubble sort, Selection Sort</li>
+            </ul>
+        </li>
+        <li>O(2^n) exponential
+            <ul>
+                <li>Work explode </li>
+                <li>recursive Fibonacci</li>
+            </ul>
+            <br>
+        </li>
+    </ol>
+    <ul>
+        <li><strong>Best to Worst performance: </strong>
+            <ul>
+                <li>
+                    O(1) → O(logn) → O(n) → O(n logn) → O(n^2) → O(2^n)
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li><strong>Cases for Complexity analysis</strong>:
+            <ul>
+                <li>Best case – the scenario where the algorithm does the least work to finish.</li>
+                <li>Worst case – the scenario where the algorithm does the most work to <br>
+                    finish — this is the one most commonly analyzed, since it gives a guaranteed upper bound.</li>
+                <li>Average case – the expected amount of work across all possible inputs, not just one extreme.</li>
+            </ul>
+        </li>
+    </ul>
+        <p>⚠️ Important nuance not to skip: these three cases only produce different complexities when the algorithm's work actually depends on the arrangement of the input (e.g. it can exit early, or skip ahead). If an algorithm always does the same fixed amount of work regardless of input, best/worst/average case are identical</p>
+    <h2>Searching and Algorithm</h2>
+    <ol>
+        <li>Searching for the Minimum</li>
+        <li>Sequential Search</li>
+        <li>Binary Search</li>
+    </ol>
+    <h3>1. Searching for the Minimum</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>We want a function that doesn’t just give us the smallest value in a list, but instead tells us where (the index) that smallest value is.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Start at the beginning</strong>  Assume the first item (index 0) is the smallest.</li>
+        <li><strong>Scan through the list</strong>  Move from left to right, checking each item one by one.</li>
+        <li><strong>Compare</strong>  If you find an item smaller than the current "smallest," update your record:
+            <uL>
+                   <li>Save the index of this new smaller item.</li>
+            </uL>
+        </li>
+        <li><strong>Finish</strong> When you reach the end, return the index of the smallest item found.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def indexOfMin(lst):  <br>
+        # Step 1: Assume first item is smallest <br>
+        min_index = 0 <br>
+
+        # Step 2: Check the rest of the list <br>
+        for i in range(1, len(lst)): <br>
+          # Step 3: Compare <br>
+          if lst[i] < lst[min_index]: <br>
+            min_index = i <br>
+
+        # Step 4: Return the index <br>
+        return min_index
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [8, 3, 5, 2, 7] </code></p>
+        <ul>
+            <li>Start: min_index = 0 (value = 8)</li>
+            <li>Compare index 1 → 3 < 8 → update min_index = 1</li>
+            <li>Compare index 2 → 5 < 3? No → keep min_index = 1</li>
+            <li>Compare index 3 → 2 < 3 → update min_index = 3
+            <li>Compare index 4 → 7 < 2? No → keep min_index = 3</li>
+        </ul>
+    <p> ✅Final answer: 3 (the smallest value is at index 3, which is 2).</p>
+    <p><strong>Complexity</strong></p>
+    <ul>
+        <li>The algorithm must check every item once to be sure it has found the true minimum.</li>
+        <li>Comparisons: always n − 1, regardless of the data.</li>
+        <li><strong>Time complexity = O(n)</strong></li>
+        <li><strong>Space complexity = O(1)</strong> — you're only ever storing one number (min_index), no matter how big the list gets.</li>
+    </ul>
+    <h3>2. Sequential Search</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Sequential search (also called linear search) is the simplest way to look for an item in a list. You start at the first element and check each one in order until you either find the target or reach the end.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Begin</strong> at the first item in the list.</li>
+        <li><strong>Compare</strong> it with the target value.</li>
+        <li><strong>If it matches</strong> → return the index (position).</li>
+        <li><strong>If not</strong> → move to the next item.</li>
+        <li><strong>Continue</strong> until the target is found or the list ends.</li>
+        <li><strong>If the target not found</strong> → return something like -1 (meaning "not found").</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def sequentialSearch(lst, target):  <br>
+        for i in range(len(lst)): <br>
+        # Step 1: Compare each item with target <br>
+        if lst[i] == target: <br>
+        return i  # Found at index i <br>
+
+        # Step 2: If loop finishes, target wasn't found <br>
+        return -1
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [5, 8, 9, 10], target = 9 </code></p>
+    <ul>
+        <li>Compare index 0 → 5 == 9? ❌ No</li>
+        <li>Compare index 1 → 8 == 9? ❌ No</li>
+        <li>Compare index 2 → 9 == 9? ✅ Yes → return 2</li>
+    </ul>
+    <p> ✅Final answer: 2 (the target is at index 2).</p>
+    <p><strong>Complexity</strong></p>
+    <ul>
+        <li>Unlike indexOfMin, this algorithm can exit early — the moment it finds a match, it stops.</li>
+        <li><strong>Best Case = O(1)</strong>
+            <ul>
+                <li>target is first.</li>
+                <li>only 1 comparison.</li>
+            </ul>
+        </li>
+        <li><strong>Worst Case = O(n)</strong>
+        <ul>
+            <li>Target is last or missing.</li>
+            <li>All n items checked.</li>
+        </ul>
+        </li>
+        <li><strong>Average Case = O(n)</strong>
+        <ul>
+            <li>n/2 comparisons; constant factor doesn't change growth rate.</li>
+        </ul>
+        </li>
+        <li><strong>Space complexity = O(1)</strong> — only a few variables used, no extra data structures.</li>
+    </ul>
+    <h3>3. Binary Search</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Binary search is a fast way to find an item in a <strong>sorted list</strong>. Instead of checking one by one, it repeatedly cuts the list in half until the target is found (or the search space is empty).</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Start</strong> with the entire sorted list.</li>
+        <li><strong>Look</strong> at the <strong>middle element</strong>.</li>
+        <li><strong>If the middle element is the target</strong> → return its index.</li>
+        <li><strong>If the target is smaller</strong> → search the left half.</li>
+        <li><strong>If the target is larger</strong> → search the right half.</li>
+        <li><strong>Repeat</strong> until the target is found or the list is empty.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def binarySearch(lst, target):  <br>
+        low = 0 <br>
+        high = len(lst) - 1 <br>
+
+        while low <= high: <br>
+        mid = (low + high) // 2 <br>
+        if lst[mid] == target: <br>
+        return mid <br>
+        elif lst[mid] < target: <br>
+        low = mid + 1 <br>
+        else: <br>
+        high = mid - 1 <br>
+
+        return -1  # Not found
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [2, 4, 6, 8, 9, 11, 13], target = 9 </code></p>
+    <ul>
+        <li>Step 1: low=0, high=6 → mid=3 → value=8 → 9 > 8 → search right half.</li>
+        <li>Step 2: low=4, high=6 → mid=5 → value=11 → 9 < 11 → search left half.</li>
+        <li>Step 3: low=4, high=4 → mid=4 → value=9 → ✅ found at index 4.</li>
+    </ul>
+    <p> ✅Final answer: 4 (the target is at index 4).</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+    <ul>
+        <li>Unlike sequential search, binary search cuts the problem in half every step — that's what pulls the complexity down from <strong>O(n)</strong> to <strong>O(log n)</strong>.</li>
+        <li><strong>Best Case = O(1)</strong>
+        <ul>
+            <li>Target is the middle element on the first check.</li>
+            <li>Only 1 comparison needed.</li>
+        </ul>
+        </li>
+        <li><strong>Worst Case = O(log n)</strong>
+        <ul>
+            <li>Target is at the far end or not in the list.</li>
+            <li>The algorithm keeps halving until the search space is empty.</li>
+            <li>Comparisons: about log<sub>2</sub>n.</li>
+        </ul>
+        </li>
+        <li><strong>Average Case = O(log n)</strong>
+        <ul>
+            <li>Target is somewhere in the list.</li>
+            <li>On average, it takes about half the number of steps as the worst case.</li>
+            <li>Still expressed as O(log n).</li>
+        </ul>
+        </li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li><strong>Iterative version:</strong> Only a few variables (low, high, mid).
+        <ul>
+            <li><strong>Space complexity = O(1)</strong>.</li>
+        </ul>
+        </li>
+        <li><strong>Recursive version:</strong>each recursive call adds a frame to the call stack.
+        <ul>
+            <li><strong>Space complexity = O(log n)</strong>.</li>
+        </ul>
+        </li>
+    </ul>
+    <h2>Sorting Algorithm</h2>
+    <ol>
+        <li>Selection Sort</li>
+        <li>Bubble Sort</li>
+        <li>Insertion Sort</li>
+        <li>Merge Sort</li>
+        <li>Quick Sort</li>
+        </ol>
+    <h3>1. Selection Sort</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Selection Sort organizes a list by repeatedly finding the <strong>smallest element</strong> and moving it to its correct position. Think of it like arranging cards: you look for the smallest card, place it first, then look for the next smallest, and so on.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Start</strong> at the first position.</li>
+        <li><strong>Search</strong> the rest of the list to find the <strong>minimum element</strong>.</li>
+        <li><strong>Swap</strong> that minimum element with the element at the current position.</li>
+        <li><strong>Move</strong> to the next position and repeat until the list is sorted.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def selectionSort(lst): <br>
+        n = len(lst) <br>
+        for i in range(n - 1): <br>
+        min_index = i <br>
+        for j in range(i + 1, n): <br>
+        if lst[j] < lst[min_index]: <br>
+        min_index = j <br>
+        # Swap the found minimum with the first unsorted element <br>
+        lst[i], lst[min_index] = lst[min_index], lst[i] <br>
+        return lst
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [8, 3, 5, 2, 7] </code></p>
+    <ul>
+        <li>Step 1: Find smallest (2) → swap with first → [2, 3, 5, 8, 7]</li>
+        <li>Step 2: Find smallest in rest (3) → already in place → [2, 3, 5, 8, 7]</li>
+        <li>Step 3: Find smallest in rest (5) → already in place → [2, 3, 5, 8, 7]</li>
+        <li>Step 4: Find smallest in rest (7) → swap with 8 → [2, 3, 5, 7, 8]</li>
+    </ul>
+    <p> ✅Final sorted list: [2, 3, 5, 7, 8].</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+    <ul>
+        <li>The algorithm always scans the remaining unsorted portion to find the minimum, on every pass — no early exit exists here.</li>
+        <li><strong>Best Case = O(n²)</strong> — even if the list is already sorted, it still searches for the minimum in each pass.</li>
+        <li><strong>Worst Case = O(n²)</strong> — reverse order, same number of comparisons and swaps.</li>
+        <li><strong>Average Case = O(n²)</strong> — same number of comparisons regardless of input order.</li>
+        <li>👉 Comparisons: n(n−1)/2. Selection Sort always does the same amount of comparison work, so it's O(n²) in <strong>all</strong> cases.</li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li>Only a few variables are stored (min_index, loop counters).</li>
+        <li>Sorting is done in place — no extra arrays needed.</li>
+        <li><strong>Space complexity = O(1)</strong> (constant space).</li>
+    </ul>
+    <p><strong>Summary</strong></p>
+    <ul>
+        <li>Best case: O(n²)</li>
+        <li>Worst case: O(n²)</li>
+        <li>Average case: O(n²)</li>
+        <li>Space complexity: O(1)</li>
+    </ul>
+
+    <h3>2. Bubble Sort</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Bubble Sort repeatedly compares <strong>adjacent elements</strong> and swaps them if they are in the wrong order. The largest values "bubble up" to the end of the list.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Start</strong> at the beginning of the list.</li>
+        <li><strong>Compare</strong> each pair of adjacent elements.</li>
+        <li><strong>Swap</strong> them if they are out of order.</li>
+        <li><strong>Repeat</strong> passes until no swaps are needed (list is sorted).</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+    <p>⚠️ <em>Note: a plain bubble sort with no early-exit check always runs the full nested loop, even on an already-sorted list — it has no way to "notice" the list is sorted and stop. To actually get a linear best case, you need a version that tracks whether any swap happened during a pass.</em></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def bubbleSort(lst): <br>
+        n = len(lst) <br>
+        while n > 1: <br>
+        swapped = False <br>
+        for i in range(1, n): <br>
+        if lst[i] < lst[i - 1]: <br>
+        lst[i], lst[i - 1] = lst[i - 1], lst[i] <br>
+        swapped = True <br>
+        if not swapped: <br>
+        return lst  # Stop early — list is already sorted <br>
+        n -= 1 <br>
+        return lst
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [5, 3, 8, 2] </code></p>
+    <ul>
+        <li>Pass 1: [3, 5, 2, 8]</li>
+        <li>Pass 2: [3, 2, 5, 8]</li>
+        <li>Pass 3: [2, 3, 5, 8] → no swaps → stop early</li>
+    </ul>
+    <p> ✅Final sorted list: [2, 3, 5, 8].</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+    <ul>
+        <li><strong>Best Case = O(n)</strong> — list is already sorted. On the first pass, no swaps occur, the flag stays False, and the function returns immediately.</li>
+        <li><strong>Worst Case = O(n²)</strong> — list is in reverse order, maximum number of swaps needed.</li>
+        <li><strong>Average Case = O(n²)</strong> — still quadratic on average.</li>
+        <li>👉 Without the swap-tracking flag, this best case does not exist — a plain bubble sort with no early exit is O(n²) in <strong>every</strong> case, including best case.</li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li>In-place sorting.</li>
+        <li><strong>Space complexity = O(1)</strong>.</li>
+    </ul>
+    <p><strong>Summary</strong></p>
+    <ul>
+        <li>Best case: O(n)</li>
+        <li>Worst case: O(n²)</li>
+        <li>Average case: O(n²)</li>
+        <li>Space complexity: O(1)</li>
+    </ul>
+
+    <h3>3. Insertion Sort</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Insertion Sort builds the sorted list one item at a time by <strong>inserting each new element into its correct position</strong> among the already sorted elements.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Start</strong> with the second element.</li>
+        <li><strong>Compare</strong> it with elements before it.</li>
+        <li><strong>Shift</strong> larger elements one position to the right.</li>
+        <li><strong>Insert</strong> the current element into its correct position.</li>
+        <li><strong>Repeat</strong> until the list is sorted.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def insertionSort(lst): <br>
+        for i in range(1, len(lst)): <br>
+        key = lst[i] <br>
+        j = i - 1 <br>
+        while j >= 0 and lst[j] > key: <br>
+        lst[j + 1] = lst[j] <br>
+        j -= 1 <br>
+        lst[j + 1] = key <br>
+        return lst
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [5, 3, 8, 2] </code></p>
+    <ul>
+        <li>Step 1: Insert 3 → [3, 5, 8, 2]</li>
+        <li>Step 2: Insert 8 → [3, 5, 8, 2] (no change)</li>
+        <li>Step 3: Insert 2 → [2, 3, 5, 8]</li>
+    </ul>
+    <p> ✅Final sorted list: [2, 3, 5, 8].</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+    <ul>
+        <li>Unlike plain bubble sort, this algorithm's <code>while</code> loop naturally stops early when it hits an element already in the right place — the early exit is built into the algorithm itself, not an add-on.</li>
+        <li><strong>Best Case = O(n)</strong> — list is already sorted; the inner while loop never runs.</li>
+        <li><strong>Worst Case = O(n²)</strong> — list is in reverse order; maximum shifting required.</li>
+        <li><strong>Average Case = O(n²)</strong> — still quadratic on average.</li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li>In-place sorting.</li>
+        <li><strong>Space complexity = O(1)</strong>.</li>
+    </ul>
+    <p><strong>Summary</strong></p>
+    <ul>
+        <li>Best case: O(n)</li>
+        <li>Worst case: O(n²)</li>
+        <li>Average case: O(n²)</li>
+        <li>Space complexity: O(1)</li>
+    </ul>
+
+    <h3>4. Merge Sort</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Merge Sort uses <strong>divide and conquer:</strong> split the list into halves until each sublist has one element, then merge the sublists back together in sorted order.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Divide</strong> the list into two halves.</li>
+        <li><strong>Recursively sort</strong> each half.</li>
+        <li><strong>Merge</strong> the two sorted halves into one sorted list.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def mergeSort(lst): <br>
+        if len(lst) > 1: <br>
+        mid = len(lst) // 2 <br>
+        left = lst[:mid] <br>
+        right = lst[mid:] <br>
+
+        mergeSort(left) <br>
+        mergeSort(right) <br>
+
+        i = j = k = 0 <br>
+        while i < len(left) and j < len(right): <br>
+        if left[i] < right[j]: <br>
+        lst[k] = left[i] <br>
+        i += 1 <br>
+        else: <br>
+        lst[k] = right[j] <br>
+        j += 1 <br>
+        k += 1 <br>
+
+        while i < len(left): <br>
+        lst[k] = left[i] <br>
+        i += 1 <br>
+        k += 1 <br>
+
+        while j < len(right): <br>
+        lst[k] = right[j] <br>
+        j += 1 <br>
+        k += 1 <br>
+        return lst
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [5, 3, 8, 2] </code></p>
+    <ul>
+        <li>Split → [5, 3] and [8, 2]</li>
+        <li>Sort left → [3, 5]</li>
+        <li>Sort right → [2, 8]</li>
+        <li>Merge → [2, 3, 5, 8]</li>
+    </ul>
+    <p> Final sorted list: [2, 3, 5, 8].</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+     <ul>
+        <li>The list is always split in half, regardless of the data's arrangement — that's why there's no case-to-case variation here.</li>
+        <li><strong>Best Case = O(n log n)</strong></li>
+        <li><strong>Worst Case = O(n log n)</strong></li>
+        <li><strong>Average Case = O(n log n)</strong></li>
+        <li>👉 Same complexity in all cases, since splitting and merging always happen the same way no matter how the data is arranged.</li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li>Needs extra arrays for merging — this is not in-place.</li>
+        <li><strong>Space complexity = O(n)</strong>.</li>
+    </ul>
+    <p><strong>Summary</strong></p>
+    <ul>
+        <li>Best case: O(n log n)</li>
+        <li>Worst case: O(n log n)</li>
+        <li>Average case: O(n log n)</li>
+        <li>Space complexity: O(n)</li>
+    </ul>
+
+    <h3>5. Quick Sort</h3>
+    <p><strong>📝The Idea:</strong></p>
+    <ul>
+        <li>Quick Sort is a divide and conquer algorithm. It picks a pivot element, then rearranges the list so all elements smaller than the pivot go to the left, and all larger elements go to the right. It then recursively sorts the left and right parts.</li>
+    </ul>
+    <p><strong>🔎 How It Works</strong></p>
+    <ol>
+        <li><strong>Pick a pivot</strong> (commonly the first, last, or middle element).</li>
+        <li><strong>Partition</strong> the list: move all smaller elements to the left of the pivot, and all larger elements to the right.</li>
+        <li><strong>Recursively apply</strong> Quick Sort to the left and right sublists.</li>
+        <li><strong>Combine</strong> results into a fully sorted list.</li>
+    </ol>
+    <p><strong>⚡ Example</strong></p>
+
+    <p><em>python</em></p>
+    <div><code>
+        def quickSort(lst): <br>
+        if len(lst) <= 1: <br>
+        return lst <br>
+        pivot = lst[len(lst) // 2] <br>
+        left = [x for x in lst if x < pivot] <br>
+        middle = [x for x in lst if x == pivot] <br>
+        right = [x for x in lst if x > pivot] <br>
+        return quickSort(left) + middle + quickSort(right)
+    </code></div>
+    <p><strong>📊Walkthrough Example</strong> </p>
+    <p>Suppose to have:</p>
+    <p><em>python </em> <br>
+        <code>numbers = [5, 3, 8, 2] </code></p>
+    <ul>
+        <li>Pivot = 8 → Left = [5, 3, 2], Middle = [8], Right = []</li>
+        <li>Sort Left [5, 3, 2]: Pivot = 3 → Left = [2], Middle = [3], Right = [5]</li>
+        <li>Combine → [2, 3, 5]</li>
+        <li>Final merge → [2, 3, 5, 8]</li>
+    </ul>
+    <p> Final sorted list: [2, 3, 5, 8].</p>
+    <p><strong>⏱ Time Complexity</strong></p>
+    <ul>
+        <li>Unlike merge sort, quicksort's performance depends heavily on how good the pivot choice turns out to be — this is why its cases genuinely differ.</li>
+        <li><strong>Best Case = O(n log n)</strong> — pivot splits the list evenly each time.</li>
+        <li><strong>Worst Case = O(n²)</strong> — pivot is always the smallest or largest element (bad partitioning, e.g. an already-sorted list with a first/last-element pivot strategy).</li>
+        <li><strong>Average Case = O(n log n)</strong> — with reasonably good pivot choices, partitions are fairly balanced.</li>
+    </ul>
+    <p><strong>💾 Space Complexity</strong></p>
+    <ul>
+        <li>Recursive calls use stack space.</li>
+        <li><strong>Average space complexity = O(log n)</strong>.</li>
+        <li><strong>Worst case (bad partitions) = O(n)</strong>.</li>
+    </ul>
+    <p><strong>Summary</strong></p>
+    <ul>
+        <li>Best case: O(n log n)</li>
+        <li>Worst case: O(n²)</li>
+        <li>Average case: O(n log n)</li>
+        <li>Space complexity: O(log n) average, O(n) worst case</li>
+    </ul>
+</main>
+<footer>&copy; 2026 Data Structures and Algorithms Learning Website</footer>
+</body>
+</html>

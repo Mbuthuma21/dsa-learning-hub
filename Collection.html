@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn data structures and algorithms with interactive lessons, quizzes, and visualisations." />
+    <meta name="keywords" content="data structures, algorithms, DSA, arrays, linked lists, trees" />
+    <meta name="author" content="Bandile" />
+    <meta property="og:title" content="DSA Learning Hub" />
+    <meta property="og:description" content="Learn data structures and algorithms interactively." />
+    <meta property="og:url" content="https://yoursite.com" />
+    <meta name="theme-color" content="#4a90e2" />
+    <title>Collection</title>
+</head>
+<body>
+<header><h1>Chapter 1 -Z</h1></header>
+<h2>INTRODUCTION</h2>
+<ul>
+    <li>A collection is a container that stores and organizes other objects.</li>
+    <li>The object stored inside are called items and element.</li>
+    <li>Most important concept in data structure mostly focused on Grouping and Managing Data.</li>
+    <li>Collections are sometimes also called data structures or abstract data types when we describe
+        their behavior independently of how they are implemented.</li>
+    <li>The examples of the collections [list, array, stacks, queue and etc] you will see them through out the process.</li>
+</ul>
+<h2>Type of Collection</h2>
+<ol>
+    <li>Linear Collection
+        <ul>
+            <li><p>
+                Elements are arranged in sequence form where every item has a predecessor and a successor,
+                except the first and last items. The last item has only a predecessor, and the first item has only a successor.
+                Examples include lists, stacks, and queues.
+            </p></li>
+            <li><p><strong>For Example:</strong></p></li>
+            <li>
+                <p><code>[A, B, C, D]{Linear Collection}</code></p>
+                <ul>
+                    <li><strong>A</strong> → first item → has successor <strong>B</strong> only.</li>
+                    <li><strong>B</strong> → has predecessor A and successor <strong>C</strong>.</li>
+                    <li><strong>C</strong> → has predecessor B and successor <strong>D</strong>. </li>
+                    <li><strong>D</strong> → last item → has predecessor <strong>C</strong> only.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Hierarchical Collection
+    <ul>
+        <li>Where item are arranged in a parent like relationship (<strong>tress</strong>).</li>
+        <li>In a tree each item except the root has exactly one parent,
+            and items can have zero or more children,forming levels from top (root) to leaves.</li>
+        <li>
+            <div class="tree">
+
+                <!-- Root -->
+                <div class="node root">50</div>
+
+                <!-- Level 2 -->
+                <div class="children">
+                    <div class="branch">
+                        <div class="line"></div>
+                        <div class="node">30</div>
+
+                        <!-- Left Subtree -->
+                        <div class="children">
+                            <div class="branch">
+                                <div class="line"></div>
+                                <div class="node">20</div>
+                            </div>
+
+                            <div class="branch">
+                                <div class="line"></div>
+                                <div class="node">40</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="branch">
+                        <div class="line"></div>
+                        <div class="node">70</div>
+
+                        <!-- Right Subtree -->
+                        <div class="children">
+                            <div class="branch">
+                                <div class="line"></div>
+                                <div class="node">60</div>
+                            </div>
+
+                            <div class="branch">
+                                <div class="line"></div>
+                                <div class="node">80</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+    </li>
+    <li>Graph Collection</li>
+    <ul>
+        <li>Items can be connected to many other items — each item can have many predecessors and many successors at the same time..</li>
+        <li>An item (vertex) can have edges to many other vertices.</li>
+        <li>There may be cycles, so there is no single root or strict parent–child hierarchy.</li>
+        <li>All elements connected to a given vertex are considered both its predecessors and its successors — these are called its neighbors.</li>
+        <li>
+            <table>
+                <tr>
+                    <td colspan="2"></td>
+                    <td align="center"><table border="1"><tr><td>&nbsp;B&nbsp;</td></tr></table></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>&#8601;</td>
+                    <td colspan="1"></td>
+                    <td>&#8595;</td>
+                    <td colspan="1"></td>
+                    <td>&#8600;</td>
+                </tr>
+                <tr>
+                    <td align="center"><table border="1"><tr><td>&nbsp;A&nbsp;</td></tr></table></td>
+                    <td>&mdash;</td>
+                    <td align="center"><table border="1"><tr><td>&nbsp;E&nbsp;</td></tr></table></td>
+                    <td>&mdash;</td>
+                    <td align="center"><table border="1"><tr><td>&nbsp;C&nbsp;</td></tr></table></td>
+                </tr>
+                <tr>
+                    <td>&#8600;</td>
+                    <td colspan="1"></td>
+                    <td>&#8595;</td>
+                    <td colspan="1"></td>
+                    <td>&#8601;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td align="center"><table border="1"><tr><td>&nbsp;D&nbsp;</td></tr></table></td>
+                    <td>&mdash;</td>
+                    <td align="center"><table border="1"><tr><td>&nbsp;F&nbsp;</td></tr></table></td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+    <li>Unordered Collection</li>
+    <ul>
+        <li>items has no position on a sequence(<strong>bags, sets</strong>).</li>
+    </ul>
+    <li>Sorted Collection</li>
+    <ul>
+        <li>Items are arranged in ascending order or descending order.</li>
+        <li>Does not have to be linear or ordered by position.</li>
+        <li>Sets, bags, and dictionaries can also be sorted — even though their items are not accessed by position/index.</li>
+        <li>A binary search tree (a hierarchical collection) also imposes a natural ordering on its items.</li>
+    </ul>
+</ol>
+<h2>OPERATION OF COLLECTION</h2>
+<ul>
+    <li>Every collection regardless of the type they support set of operation.</li>
+    <li>Operation allows to interact with data inside.</li>
+</ul>
+
+<h3><strong>Operation</strong></h3>
+<ul>
+    <li><code>isEmpty()</code> → check if the collection is empty.</li>
+    <li><code>len()</code> → return the number of item in a collection.</li>
+    <li><code>str()</code> → return string representation.</li>
+    <li>in → check if an item exist in the collections.</li>
+    <li>+ → joins two collections together into a new collection containing all their elements in order.</li>
+    <li>= → operator checks whether two collections contain the same elements in the same order. If they do, the collections are equal.</li>
+    <li><code>iter()</code> → allow you to loop through the collections.</li>
+    <p><em>These operations form part of the abstract interface of a collection; different implementations <br>
+        must still support these behaviors even if the internal code is different</em>. </p>
+</ul>
+<hr>
+    <h3><strong>Type of Conversion</strong></h3>
+    <ul>
+        <li>Converts one type of collection into another type.</li>
+        <li>Not limited to collections only — any iterable object can be converted into a collection.</li>
+        <ul>
+            <li>Example: <code>list(range(1, 11, 2))</code> → <code>[1, 3, 5, 7, 9]</code> — a range is iterable but not itself a collection.</li>
+        </ul>
+    </ul>
+    <li>Common examples:</li>
+    <ul>
+        <li><code>list(collection)</code> → converts to a list</li>
+        <li><code>tuple(collection)</code> → converts to a tuple</li>
+        <li><code>dict(collection)</code> → converts (key, value) pairs into a dictionary</li>
+        <li><code>sorted(collection)</code> → returns a sorted list of a collection's items</li>
+    </ul>
+    <li>If the argument is omitted, the conversion function returns a new, empty collection of that type.</li>
+<hr>
+    <!-- Add a line here-->
+    <h3><strong>Cloning and Equality</strong></h3>
+    <ul>
+        <li>Cloning is a special case of type conversion — the source and new collection are the same type.</li>
+        <li>Creates a copy of a collection (changing the clone does not change the original).</li>
+        <li>Cloning produces a <strong>shallow copy</strong></li>
+        <ul>
+            <li>Items themselves are not cloned — only references to them are copied.</li>
+            <li>Fine for immutable items (numbers, strings, tuples).</li>
+            <li>Risky for mutable items shared between original and clone — changing one can affect the other.</li>
+            <li>To avoid this, use a deep copy — loop over the source collection and explicitly clone each item before adding it.</li>
+        </ul>
+        <li>Equality (==) checks if two collections have the same items in the same position.</li>
+        <ul>
+            <li>Two collections are structurally equal when they have the same number of elements in the same order — even if stored in different memory locations.</li>
+        </ul>
+        <li>Identity (is) checks whether two variables refer to the exact same object in memory — different from ==.</li>
+        <div><code>lyst1 = [2, 4, 8] <br>
+            lyst2 = list(lyst1)      # clone of lyst1 <br>
+            lyst1 is lyst2            # False — two distinct objects <br>
+            lyst1 == lyst2            # True  — same type, same items, same order</code></div>
+    </ul>
+
+<hr>
+    <h3><strong>Iterator</strong></h3>
+    <ul>
+        <li>Is an object that allow you to visit each and every item in a collection one at a time.</li>
+        <li><p>When you  write a for loop in a python, the python is using iterator behind the scene.</p></li>
+    </ul>
+<hr>
+    <h2>Implementation of Collections</h2>
+    <p>When you create a collection item need to be stored somewhere in a memory.</p>
+    <p><strong>They are two ways to do that:</strong></p>
+    <ol>
+        <li>Array-Based Implementation</li>
+        <ul>
+            <li>Items are stored in a contiguous block of memory <em>{contiguous  - next to each other}</em>.</li>
+            <li><p> Python built-in list is example of this. <br>
+                example: <code>numbers = [2, 3, 4 ,5]</code></p></li>
+        </ul>
+        <li>Linked Structure Implementation</li>
+        <ul>
+            <li>Items are stored in a node scatterd in memory.</li>
+            <li>Each node holds an item and a pointer to the next node.</li>
+            <li>No index</li>
+            <li><p><strong>Example:</strong>
+                <table>
+                    <tr>
+                        <td><table border="1"><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td><table border="1"><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td><table border="1"><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td>NULL</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><table border="1"><tr><td>10</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td><table border="1"><tr><td>20</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td><table border="1"><tr><td>30</td></tr></table></td>
+                        <td>&rarr;</td>
+                        <td>NULL</td>
+                    </tr>
+                </table>
+                </p></li>
+        </ul>
+    </ol>
+
+    <h2>Quiz</h2>
+    <form>
+        <fieldset>
+            <legend>Collection Quiz</legend>
+            <p>1. Which collection type organizes data in a parent-child relationship?</p>
+            <input type="radio" id="q1a" name="q1" value="linear"/>
+            <label for="q1a">a.Linear</label> <br>
+
+            <input type="radio" id="q1b" name="q1" value="Graph"/>
+            <label for="q1b">b.Graph</label><br>
+
+            <input type="radio" id="q1c" name="q1" value="Unordered"/>
+            <label for="q1c">c.Unordered</label><br>
+
+            <input type="radio" id="q1d" name="q1" value="Hierarchical"/>
+            <label for="q1d">d.Hierarchical</label>
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: d <br>
+                    Where item are arranged in a parent like relationship (tress).</p>
+            </details>
+
+            <p>2. Linked list implementations use physical positions in memory to represent logical order?</p>
+            <input type="radio" id="q2a" name="q2" value="True"/>
+            <label for="q2a">a.True</label> <br>
+
+            <input type="radio" id="q2b" name="q2" value="False"/>
+            <label for="q2b">b.False</label><br>
+
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: False <br>
+                    Items are stored in a node scatterd in memory. <br>
+                    Each node holds an item and a pointer to the next node.<br>
+                    No index.</p>
+            </details>
+
+            <p>3.Example of Linear Collection
+                (Select all the apply)</p>
+
+            <input type="checkbox" id="queue" name="queue" />
+            <label for="queue">a.queue</label> <br>
+            <input type="checkbox" id="stack" name="stack" />
+            <label for="stack">b.stack</label><br>
+            <input type="checkbox" id="bag" name="bag" />
+            <label for="bag">c.bag</label><br>
+            <input type="checkbox" id="list" name="list" />
+            <label for="list">d.list</label><br>
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: queue, stack, list <br>
+                    bag is an Unordered Collection</p>
+            </details>
+
+            <p>3. Example of Linear Collection </p>
+            <input type="radio" id="q3a" name="q1" value="queue"/>
+            <label for="q3a">a.queue</label> <br>
+
+            <input type="radio" id="q3b" name="q1" value="Graph"/>
+            <label for="q3b">b.Graph</label><br>
+
+            <input type="radio" id="q3c" name="q1" value="Unordered"/>
+            <label for="q3c">c.Unordered</label><br>
+
+            <input type="radio" id="q3d" name="q1" value="Hierarchical"/>
+            <label for="q1d">d.Hierarchical</label>
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: d <br>
+                    Where item are arranged in a parent like relationship (tress).</p>
+            </details>
+
+            <p>4. What does <strong><code>isEmpty()</code></strong>return if a collection has items in it?</p>
+            <input type="radio" id="q4a" name="q4" value="True"/>
+            <label for="q4a">a.True</label> <br>
+
+            <input type="radio" id="q4b" name="q4" value="None"/>
+            <label for="q4b">b.None</label><br>
+
+            <input type="radio" id="q4c" name="q4" value="False"/>
+            <label for="q4c">c.False</label><br>
+
+            <input type="radio" id="q4d" name="q4" value="0"/>
+            <label for="q4d">d.0</label>
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: True <br>
+                    When the collection is empty it return True.</p>
+            </details>
+
+            <p>5. In a hierarchical collection, each item except the root has exactly one parent.</p>
+            <input type="radio" id="q5a" name="q5" value="True"/>
+            <label for="q5a">a.True</label> <br>
+
+            <input type="radio" id="q5b" name="q5" value="False"/>
+            <label for="q5b">b.False</label><br>
+
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: True <br>
+                    .</p>
+            </details>
+            <p>6. What operation would you use to visit each item in a collection one at a time?</p>
+            <input type="radio" id="q6a" name="q6" value="clone"/>
+            <label for="q6a">a.clone()</label> <br>
+
+            <input type="radio" id="q6b" name="q6" value="isEmpty"/>
+            <label for="q6b">b.isEmpty()</label><br>
+
+            <input type="radio" id="q6c" name="q6" value="len"/>
+            <label for="q6c">c.len()</label><br>
+
+            <input type="radio" id="q6d" name="q6" value="iter"/>
+            <label for="q6d">d.iter</label>
+
+            <details>
+                <summary>Answer (click to reveal)</summary>
+                <p>Correct answer: d <br>
+                    Iterator is an object that allow you to visit each and every item in a collection one at a time. </p>
+            </details>
+        </fieldset>
+    </form>
+    <footer><p>&copy; 2026 Data Structures and Algorithms Learning Website</p></footer>
+</main>
+</body>
+</html>
